@@ -16,7 +16,6 @@ import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 
 @Data
-@Builder
 public class Station {
     String name;
     URL url;
@@ -97,7 +96,8 @@ public class Station {
     private void removeDeparted() {
         departures.removeAll(departures.stream()
                 .filter(i -> i.departureTime <= 0)
-                .toList());
+                .collect(Collectors
+                        .toList()));
     }
 
     public void updateDeparturesOffline(int timeSinceLastDownload) {
